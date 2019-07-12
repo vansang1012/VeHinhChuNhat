@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hình chữ nhật</title>
+</head>
+<body>
+<canvas width="1000" height="800" id="myCanvas" style="border: 1px solid #cccccc"></canvas>
+<script>
+        let Rectangle=function (chieuDai,chieuRong) {
+        this.chieuDai=chieuDai;
+        this.chieuRong=chieuRong;
+        this.chieuDai=Math.floor(Math.random()*500);
+        this.chieuRong=Math.floor(Math.random()*500);
+
+        this.getChuVi=function () {
+            return (this.chieuRong +this.chieuDai)*2;
+        }
+        this.getDienTich=function () {
+            return(this.chieuDai*this.chieuRong);
+        }
+
+    }
+    function createRectangle() {
+    let but=document.getElementById("myCanvas").getContext("2d");
+    let x=Math.floor(Math.random()*innerWidth);
+    let y=Math.floor(Math.random()*innerHeight);
+    let rectangle=new Rectangle();
+    let color=setColor();
+    but.beginPath();
+    but.rect(x,y,rectangle.chieuDai,rectangle.chieuRong);
+    but.fillStyle=color;
+    but.fill();
+    let chuVi=rectangle.getChuVi();
+    let dienTich=rectangle.getDienTich();
+    document.write("<br> Chu vi của hình chữ Nhật là:" + chuVi + " Diện tích là:" + dienTich);
+    }
+    function setRandomColor() {
+        return Math.random()*255;
+    }
+    function setColor() {
+        let red=setRandomColor();
+        let green=setRandomColor();
+        let blue=setRandomColor();
+        return "rgb(" + red + ',' + green + ',' + blue+ ")";
+
+    }
+createRectangle();
+
+</script>
+</body>
+</html>
